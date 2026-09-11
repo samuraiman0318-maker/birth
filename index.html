@@ -72,25 +72,23 @@
 
   .menu-toggle{
     display:none;
-    flex-direction:column;
-    justify-content:space-between;
+    align-items:center;
+    justify-content:center;
     width:24px;
-    height:16px;
+    height:24px;
     padding:0;
     background:none;
     border:none;
     cursor:pointer;
   }
-  .menu-toggle span{
-    display:block;
-    height:1.5px;
-    width:100%;
-    background:var(--ink);
-    transition:transform .28s ease, opacity .28s ease;
+  .menu-toggle svg{
+    stroke:var(--ink);
+    stroke-width:1.6;
+    stroke-linecap:round;
   }
-  .menu-toggle.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-  .menu-toggle.active span:nth-child(2){ opacity:0; }
-  .menu-toggle.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .menu-toggle .icon-close{ display:none; }
+  .menu-toggle.active .icon-menu{ display:none; }
+  .menu-toggle.active .icon-close{ display:block; }
 
   .mobile-nav{
     display:none;
@@ -98,8 +96,7 @@
     top:100%; right:0;
     width:auto;
     min-width:200px;
-    background:rgba(247,244,236,.72);
-    backdrop-filter:blur(10px);
+    background:var(--paper);
     border-bottom:1px solid var(--line);
     flex-direction:column;
     align-items:flex-end;
@@ -344,7 +341,7 @@
     cursor:pointer;
     transition:background .25s;
   }
-  button:hover{ background:var(--indigo); }
+  button:hover:not(.menu-toggle){ background:var(--indigo); }
 
   footer{
     padding:48px 0;
@@ -409,7 +406,15 @@
       <a href="#contact">お問い合わせ</a>
     </nav>
     <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+      <svg class="icon-menu" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <svg class="icon-close" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <line x1="5" y1="5" x2="19" y2="19"></line>
+        <line x1="19" y1="5" x2="5" y2="19"></line>
+      </svg>
     </button>
   </div>
   <nav id="mobileNav" class="mobile-nav">
